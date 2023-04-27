@@ -117,3 +117,119 @@ function findProduct(...arr: number[]): number[] {
   //   const input = "Let's take LeetCode contest";
     console.log(reverseWords("Let's take LeetCode contest")); // "s'teL ekat edoCteeL tsetnoc"
     
+
+    function reverseLetters(s: string): string {
+        let left = 0;
+        let right = s.length - 1;
+        const chars = s.split('');
+      
+        while (left < right) {
+          while (left < right && !isLetter(chars[left])) {
+            left++;
+          }
+      
+          while (left < right && !isLetter(chars[right])) {
+            right--;
+          }
+      
+          if (left < right) {
+            const temp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = temp;
+      
+            left++;
+            right--;
+          }
+        }
+      
+        return chars.join('');
+      }
+      
+      function isLetter(char: string): boolean {
+        return /^[a-zA-Z]$/.test(char);
+      }
+      
+      // Test Cases
+      console.log(reverseLetters("ab-cd")); // "dc-ba"
+      console.log(reverseLetters("a-bC-dEf-ghIj")); // "j-Ih-gfE-dCba"
+      console.log(reverseLetters("Test1ng-Leet=code-Q!")); // "Qedo1ct-eeLg=ntse-T!"
+    
+      
+    
+      function moveZeros(nums: number[]): number[] {
+        let nonZeroIdx = 0;
+      
+        for (let i = 0; i < nums.length; i++) {
+          if (nums[i] !== 0) {
+            nums[nonZeroIdx] = nums[i];
+            nonZeroIdx++;
+          }
+        }
+      
+        for (let i = nonZeroIdx; i < nums.length; i++) {
+          nums[i] = 0;
+        }
+      
+        return nums;
+      }
+      
+      // Test Cases
+      console.log(moveZeros([0, 1, 0, 3, 12])); // [1, 3, 12, 0, 0]
+      console.log(moveZeros([0])); // [0]
+    
+      
+    
+      function isPalindrome(s: string): boolean {
+        let left = 0;
+        let right = s.length - 1;
+      
+        while (left < right) {
+          while (left < right && !isAlphanumeric(s[left])) {
+            left++;
+          }
+      
+          while (left < right && !isAlphanumeric(s[right])) {
+            right--;
+          }
+      
+          if (left < right && s[left].toLowerCase() !== s[right].toLowerCase()) {
+            return false;
+          }
+      
+          left++;
+          right--;
+        }
+      
+        return true;
+      }
+      
+      function isAlphanumeric(char: string): boolean {
+        return /^[a-zA-Z0-9]$/.test(char);
+      }
+      
+      // Test Cases
+      console.log(isPalindrome("A man, a plan, a canal: Panama")); // true
+      console.log(isPalindrome("race a car")); // false
+    
+      
+    
+      function removeDuplicates(nums: number[]): number {
+        if (nums.length === 0) {
+          return 0;
+        }
+      
+        let uniqueIdx = 0;
+      
+        for (let i = 1; i < nums.length; i++) {
+          if (nums[i] !== nums[uniqueIdx]) {
+            uniqueIdx++;
+            nums[uniqueIdx] = nums[i];
+          }
+        }
+      
+        return uniqueIdx + 1;
+      }
+      
+      // Test Cases
+      console.log(removeDuplicates([1, 1, 2])); // 2
+      console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])); // 5
