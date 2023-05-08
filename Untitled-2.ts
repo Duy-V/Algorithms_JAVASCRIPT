@@ -306,9 +306,7 @@ const outputArr: number[] = maxMinForm(inputArr);
 console.log(outputArr); // Output: [5, 1, 4, 2, 3]
 
 
-// interating each item in array, then compare the sum of current sum and item with the current index
-// ==> find the curentSum with largest value
-//
+
 function findMaxSumSubArray(arr: number[]): number {
   let maxSum: number = arr[0]; 
   let currentSum: number = arr[0]; 
